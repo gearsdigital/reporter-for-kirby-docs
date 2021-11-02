@@ -1,0 +1,71 @@
+:root {
+  --c-text: #141203;
+  --c-text-light: rgba(20, 18, 3, .75);
+  --c-brand: #418AB2;
+  --c-brand-light: #64aad5;
+  --c-brand-secondary: #FFE37C;
+  --c-brand-secondary-light: #FFEBA0;
+  --c-bg-navbar: var(--c-brand-secondary);
+  --content-width: auto;
+  --navbar-height: 10rem;
+  --navbar-padding-v: 0.7rem;
+  --navbar-padding-h: 1.5rem;
+}
+
+.site-name {
+  display: none;
+}
+
+.page {
+  padding-top: calc(var(--navbar-height) + 3rem);
+}
+
+.sidebar {
+  top: calc(var(--navbar-height) + 3rem);
+}
+
+.navbar {
+  .logo {
+    max-width: 10rem;
+    height: 100%;
+  }
+
+  margin: 15px 15px 0 15px;
+  padding: 0 65px;
+  border-bottom: 15px solid var(--c-brand-secondary-light);
+
+  .nav-link {
+    background: black;
+    color: #fff;
+
+    span {
+      display: none;
+    }
+  }
+}
+
+.sidebar-heading + ul {
+  position: relative;
+}
+
+.sidebar-heading + ul:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  width: 4px;
+  height: 100%;
+  background: #E5EFF4;
+}
+
+.theme-default-content {
+  h1 {
+    font-size: 32px;
+    font-weight: 600;
+  }
+
+  h2 {
+    font-size: 1.35rem;
+  }
+}

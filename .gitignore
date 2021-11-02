@@ -1,0 +1,11 @@
+node_modules
+.idea
+.temp
+.cache
+.DS_Store
+*.log
+*.iml
+.vscode
+.env
+/vuepress
+dist
