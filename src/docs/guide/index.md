@@ -9,15 +9,19 @@ TBD
 
 ## Playground
 
-I know, it can be _troublesome_ to evaluate a Plugin. It must be downloaded. You have to install and configure it properly only then to find out that it's not what you are looking for.
+I know, it can be _troublesome_ to evaluate a Plugin. It must be downloaded. You have to install and configure it properly only to find out that it's not what you are looking
+for. _I got you covered!_
 
-But say no more: _I got you covered!_ You probably haven't noticed it yet, but the Form on Homepage isn't a screenshot :wink: It provides a fully functional example which you can play around with.
+You probably haven't noticed it yet, but the Form on Homepage isn't a screenshot :wink: It provides a fully functional example which you can play around with.
 
 There are some **restrictions**:
 
-1. You can add only one issue per twenty minutes.
-2. The amount of characters you can add is limited.
-3. The created issue gets deleted shortly after it was created.
+1. You can add only 3 issues per hour.
+2. The character amount is limited.
+3. The text is obfuscated but reflects the original appearance.
+
+These restrictions are necessary to keep balance between a usable example and security. I'm pretty sure that it's sufficient to get an idea of how **Reporter _for
+Kirby_** works.
 
 ## Getting started
 
