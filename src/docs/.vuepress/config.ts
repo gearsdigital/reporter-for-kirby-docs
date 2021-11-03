@@ -19,7 +19,7 @@ module.exports = {
         sidebar: [
           {
             text: "Guide",
-            children: ["/guide/", "/guide/installation.md"]
+            children: ["/guide/"]
           }
         ]
       }
