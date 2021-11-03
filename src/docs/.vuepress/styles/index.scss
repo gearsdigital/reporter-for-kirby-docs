@@ -16,14 +16,6 @@
   display: none;
 }
 
-.page {
-  padding-top: calc(var(--navbar-height) + 3rem);
-}
-
-.sidebar {
-  top: calc(var(--navbar-height) + 3rem);
-}
-
 .navbar {
   .logo {
     max-width: 10rem;
