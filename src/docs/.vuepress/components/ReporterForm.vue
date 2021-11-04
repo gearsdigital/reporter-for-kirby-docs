@@ -145,9 +145,12 @@ export default {
 
       this.loading = true;
       const response = await fetch(
-          "https://gearsdigital.com/kirby-reporter-proxy/index.php",
+          "https://reporter.gearsdigital.com",
           {
             method: "POST",
+            headers: {
+              'Content-Type': 'application/json;charset=utf-8'
+            },
             body: JSON.stringify({
               title: this.title,
               formFields: {description}
@@ -158,25 +161,15 @@ export default {
       const json = response.json();
       json.then(
           response => {
-            if (response.status < 300) {
-              this.message = response;
-              this.title = null;
-              this.preview = null;
-              this.loading = false;
-
-              setTimeout(() => {
-                this.hideNotification();
-              }, 5000);
-            }
+            this.message = response.data;
+            this.title = null;
+            this.preview = null;
+            this.loading = false;
           },
           () => {
             this.loading = false;
           }
       );
-
-      response.catch(() => {
-        this.loading = false;
-      })
     }
   }
 };
