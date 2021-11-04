@@ -9,19 +9,19 @@ TBD
 
 ## Playground
 
-I know, it can be _troublesome_ to evaluate a Plugin. It must be downloaded. You have to install and configure it properly only to find out that it's not what you are looking
-for. _I got you covered!_
+I know, it can be _troublesome_ to evaluate a Plugin. It must be downloaded. You have to install and configure it properly only to find out that it's not what you are looking for.
+I got you covered!
 
-You probably haven't noticed it yet, but the Form on Homepage isn't a screenshot :wink: It provides a fully functional example which you can play around with.
+You probably haven't noticed it yet, but the Form on Homepage isn't a screenshot. It provides a functional example which you can play around with.
 
-There are some **restrictions**:
+However, there are some **restrictions**:
 
-1. You can add only 3 issues per hour.
-2. The character amount is limited.
-3. The text is obfuscated but reflects the original appearance.
+1. The character amount is limited and truncated.
+2. The text is obfuscated (but reflects the original appearance).
 
-These restrictions are necessary to keep balance between a usable example and security. I'm pretty sure that it's sufficient to get an idea of how **Reporter _for
-Kirby_** works.
+These restrictions are necessary to keep balance between a usable example and security. I'm pretty sure that this is sufficient to get an idea how **Reporter _for Kirby_** works.
+
+Just to be clear, those restrictions only apply for the playground. Just saying... :wink:
 
 ## Getting started
 
@@ -79,8 +79,7 @@ You should create a custom user with limited scope access!
 
 #### Configure the plugin
 
-In order to work properly, the plugin needs to be configured properly. You need to enable the plugin and configure
-your issue tracker. This can be done using these options:
+In order to work properly, the plugin needs to be enabled and configured properly. This can be done using these options:
 
 1. `kirby.reporter.enabled`
 2. `kirby-reporter.repository`
@@ -116,7 +115,8 @@ Learn how to [configure](https://getkirby.com/docs/guide/configuration#the-confi
 
 ## Customization
 
-**Reporter _for Kirby_** is designed to be highly configurable and allows to adapt the Form and the Issue Template.
+**Reporter _for Kirby_** is designed to be highly configurable and allows to adapt the Form and the Issue Template. This guide assumes that you are familiar
+with [Blueprints](https://getkirby.com/docs/guide/blueprints/introduction) and [Templates](https://getkirby.com/docs/guide/templates/basics).
 
 ### Form
 
