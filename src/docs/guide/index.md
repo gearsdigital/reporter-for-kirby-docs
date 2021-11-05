@@ -36,7 +36,7 @@ You can install **Reporter _for Kirby_** using one of the following methods. The
 #### Composer <Badge text="recommend"/>
 
 ```shell
-composer require gearsdigtal/reporter-for-kirby
+composer require gearsdigital/reporter-for-kirby
 ```
 
 ::: tip Composer? What the heck?
