@@ -12,12 +12,12 @@ TBD
 I know, it can be _troublesome_ to evaluate a Plugin. It must be downloaded. You have to install and configure it properly only to find out that it's not what you are looking for.
 I got you covered!
 
-You probably haven't noticed it yet, but the Form on Homepage isn't a screenshot. It provides a functional example which you can play around with.
+You may (or may not) have noticed yet, but the Form on Homepage isn't a screenshot. It provides a functional example which you can play around with.
 
 However, there are some **restrictions**:
 
-1. The character amount is limited and truncated.
-2. The text is obfuscated (but reflects the original appearance).
+1. The text truncated.
+2. The text is obfuscated.
 
 These restrictions are necessary to keep balance between a usable example and security. I'm pretty sure that this is sufficient to get an idea how **Reporter _for Kirby_** works.
 
