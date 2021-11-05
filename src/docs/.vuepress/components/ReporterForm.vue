@@ -2,7 +2,7 @@
   <div class="report-view">
     <header>
       <h3 class="header--headline">Create Report</h3>
-      <a href="">What is this?</a>
+      <a href="./guide/#playground">What is this?</a>
     </header>
 
     <Notification
@@ -51,9 +51,9 @@
                       d="M14.85 3H1.15C.52 3 0 3.52 0 4.15v7.69C0 12.48.52 13 1.15 13h13.69c.64 0 1.15-.52 1.15-1.15v-7.7C16 3.52 15.48 3 14.85 3zM9 11H7V8L5.5 9.92 4 8v3H2V5h2l1.5 2L7 5h2v6zm2.99.5L9.5 8H11V5h2v3h1.5l-2.51 3.5z"
                   ></path>
                 </svg>
-                Markdown is supported
+                Github flavoured markdown supported
               </span>
-              <!-- <a href="">Learn more</a>-->
+<!--               <a href="">Learn more</a>-->
             </div>
           </div>
         </tab>
@@ -120,7 +120,7 @@ export default {
   },
   computed: {
     previewEnhanced() {
-      return `# Issue Template\n\nThis preview could contain some basic informations like the active user.\n\n${this
+      return `# Issue Template\n\nThis preview could contain some basic information, for example the active user.\n\n${this
           .preview ?? ""}`;
     }
   },
@@ -144,39 +144,13 @@ export default {
       }
 
       this.loading = true;
-      const response = await fetch(
-          "https://gearsdigital.com/kirby-reporter-proxy/index.php",
-          {
-            method: "POST",
-            body: JSON.stringify({
-              title: this.title,
-              formFields: {description}
-            })
-          }
-      );
 
-      const json = response.json();
-      json.then(
-          response => {
-            if (response.status < 300) {
-              this.message = response;
-              this.title = null;
-              this.preview = null;
-              this.loading = false;
-
-              setTimeout(() => {
-                this.hideNotification();
-              }, 5000);
-            }
-          },
-          () => {
-            this.loading = false;
-          }
-      );
-
-      response.catch(() => {
+      setTimeout(() => {
+        this.message = {issueUrl: 'https://example.com/repo/issue/21', status: 201, issueId: "21"};
+        this.title = null;
+        this.preview = null;
         this.loading = false;
-      })
+      }, 2000)
     }
   }
 };

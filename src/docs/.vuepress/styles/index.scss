@@ -16,23 +16,16 @@
   display: none;
 }
 
-.page {
-  padding-top: calc(var(--navbar-height) + 3rem);
-}
-
-.sidebar {
-  top: calc(var(--navbar-height) + 3rem);
-}
-
 .navbar {
   .logo {
     max-width: 10rem;
     height: 100%;
   }
 
-  margin: 15px 15px 0 15px;
+  margin: 0 15px 0 15px;
   padding: 0 65px;
   border-bottom: 15px solid var(--c-brand-secondary-light);
+  border-top: 15px solid #fff;
 
   .nav-link {
     background: black;
