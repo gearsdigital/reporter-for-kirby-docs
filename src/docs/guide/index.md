@@ -1,27 +1,31 @@
 # Introduction
 
-**Reporter _for Kirby_** is a [Kirby 3](https://getkirby.com) plugin which helps you, your editors or clients to report _bugs_, _tasks_ and to discuss _ideas_.
-It provides a very handy way to collect feedback directly out of the Kirby Panel.
+**Reporter _for Kirby_** is a [Kirby 3](https://getkirby.com) plugin which helps you, your editors or clients to report _bugs_, _tasks_ and to discuss _ideas_. It provides a very
+handy way to collect feedback directly out of the Kirby Panel. It is a simple app, which programmatically creates issues for you. That's it.
 
-## How it works
+It supports [Github](https://gitgub.com), [Gitlab](https://gitlab.com) and [Bitbucket Cloud](https://bitbucket.org) out of the box. If you need to work with another issue tracker,
+please [let me know](https://github.com/gearsdigital/reporter-for-kirby/issues/new) and I will evaluate it.
 
-TBD
+## Playground <Badge type="warning" text="beta"/>
 
-## Playground
+We all know it can be _troublesome_ to evaluate a Plugin – it must be downloaded, installed and configured only to find out, that it doesn't fit your needs. This is where a
+playground comes handy, right?
 
-I know, it can be _troublesome_ to evaluate a Plugin. It must be downloaded. You have to install and configure it properly only to find out that it's not what you are looking for.
-I got you covered!
+[Open Playground](../)
 
-You may (or may not) have noticed yet, but the Form on Homepage isn't a screenshot. It provides a functional example which you can play around with.
+### How does it work?
 
-However, there are some **restrictions**:
+For obvious reasons the given example isn't the »_real_« Panel Plugin. It would be totally impractical (if not impossible) to extract all necessary Panel dependencies only for that
+very reason. Lucky me! I've designed the core of **Reporter _for Kirby_** to work standalone :wink: I used that fact and built a very simple App, which emulates the
+Panel look and feel.
 
-1. The text truncated.
-2. The text is obfuscated.
+#### Restrictions
 
-These restrictions are necessary to keep balance between a usable example and security. I'm pretty sure that this is sufficient to get an idea how **Reporter _for Kirby_** works.
+The example provides a fully functional implementation and outlines exactly what you can expect from **Reporter _for Kirby_**. Of course there are some restrictions which are
+directly related to security concerns and in opposite of the »_real_« Panel Plugin, all text – sent to the API – is obfuscated and all links (including images and scripts), are
+removed.
 
-Just to be clear, those restrictions only apply for the playground. Just saying... :wink:
+Besides that, I'm pretty confident this example is sufficient to provide an idea how it works.
 
 ## Getting started
 
@@ -29,7 +33,7 @@ Just to be clear, those restrictions only apply for the playground. Just saying.
 
 You can install **Reporter _for Kirby_** using one of the following methods. The preferred one is Composer.
 
-#### Composer
+#### Composer <Badge text="recommend"/>
 
 ```shell
 composer require gearsdigtal/reporter-for-kirby
