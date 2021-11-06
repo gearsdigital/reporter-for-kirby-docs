@@ -8,6 +8,7 @@ module.exports = {
     }
   },
   themeConfig: {
+    repo: 'gearsdigital/reporter-for-kirby',
     displayAllHeaders: true,
     darkMode: false,
     contributors: false,
