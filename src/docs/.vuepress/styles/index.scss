@@ -62,3 +62,34 @@
     font-size: 1.35rem;
   }
 }
+
+
+@media only screen and (max-width: 419px) {
+  .theme-default-content:not(.custom) > h1, .theme-default-content:not(.custom) > h2, .theme-default-content:not(.custom) > h3, .theme-default-content:not(.custom) > h4, .theme-default-content:not(.custom) > h5, .theme-default-content:not(.custom) > h6 {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .page {
+    padding-top:  7rem;
+  }
+
+  .sidebar{
+    padding-top:  5rem;
+  }
+
+  .navbar {
+    margin: 0;
+    padding: 0 1.5rem;
+    border-bottom: 15px solid var(--c-brand-secondary-light);
+    border-top: 0;
+    height: 6rem;
+
+    .logo {
+      max-width: 8rem;
+      position: relative;
+      left: 3rem;
+      margin-top: -3px;
+    }
+  }
+}

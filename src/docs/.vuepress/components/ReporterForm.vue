@@ -396,4 +396,10 @@ export default {
   padding: 0.5rem;
   margin-bottom: 0.75rem;
 }
+
+@media only screen and (max-width: 419px) {
+  .report-view, .report-view--form {
+    padding: 1rem;
+  }
+}
 </style>

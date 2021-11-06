@@ -73,11 +73,10 @@ export default {
     a {
       transition: all 170ms ease-in-out;
       color: var(--c-text);
-      border-bottom: 1px dashed;
+      padding: 0.75rem 3rem;
 
       &:hover {
-        color: var(--c-text-light);
-        border-bottom: 1px solid;
+        color: var(--c-text-accent);
       }
     }
 
@@ -89,7 +88,6 @@ export default {
       padding: 0.75rem 3rem;
       font-weight: bold;
       border-radius: 4px;
-      margin-right: 3rem;
 
       &:hover {
         background: var(--c-text-light);
@@ -120,6 +118,33 @@ export default {
 
     &--content {
       max-width: 460px;
+    }
+  }
+}
+
+@media only screen and (max-width: 419px) {
+
+  .landing-page {
+    margin: 0;
+    width: 100%;
+
+    &--content {
+      padding: calc(var(--page-border));
+
+      p:last-child {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+
+        a {
+          margin: 0;
+        }
+      }
+    }
+
+    &--playground {
+      border: 0;
+      margin: 0;
     }
   }
 }
