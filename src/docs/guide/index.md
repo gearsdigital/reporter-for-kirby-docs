@@ -3,8 +3,13 @@
 **Reporter _for Kirby_** is a [Kirby 3](https://getkirby.com) plugin which helps you, your editors or clients to report _bugs_, _tasks_ and to discuss _ideas_. It provides a very
 handy way to collect feedback directly out of the Kirby Panel. It is a simple app, which programmatically creates issues for you. That's it.
 
-It supports [Github](https://gitgub.com), [Gitlab](https://gitlab.com) and [Bitbucket Cloud](https://bitbucket.org) out of the box. If you need to work with another issue tracker,
-please [let me know](https://github.com/gearsdigital/reporter-for-kirby/issues/new) and I will evaluate it.
+It supports [Github](https://gitgub.com), [Gitlab](https://gitlab.com) and [Bitbucket Cloud](https://bitbucket.org) out of the box.
+
+::: tip
+If you need to work with another issue tracker, please [let me know](https://github.com/gearsdigital/reporter-for-kirby/issues/new) and I will evaluate it.
+:::
+
+Since Version 4.0.0 you can send a report via **E-Mail** if you don't want to utilize an issue tracker.
 
 ## Playground <Badge type="warning" text="beta"/>
 
@@ -49,6 +54,7 @@ by [Lukas Bestle](https://lukasbestle.com/)
 ```shell
 git submodule add https://github.com/gearsdigital/reporter-for-kirby.git site/plugins/reporter-for-kirby
 ```
+
 > You need to perform this command in your Kirby root directory!
 
 #### Manual
@@ -59,17 +65,26 @@ git submodule add https://github.com/gearsdigital/reporter-for-kirby.git site/pl
 
 ### Setup
 
-**Reporter _for Kirby_** supports [Github](https://gitgub.com), [Gitlab](https://gitlab.com) and [Bitbucket Cloud](https://bitbucket.org).
-If you need to work with another issue tracker, please [let me know](https://github.com/gearsdigital/reporter-for-kirby/issues/new) and I will evaluate it.
+**Reporter _for Kirby_** supports two types of reports:
 
-Before you can start using the plugin, we need to prepare a couple of things:
+1. **Issue Tracker** – Send a report to a [Github](https://github.com), [Gitlab](https://gitlab.com) and [Bitbucket Cloud](https://bitbucket.org) repository.
+2. **E-Mail** – Send a report via E-Mail.
+
+::: tip
+If you need to work with another issue tracker, please [let me know](https://github.com/gearsdigital/reporter-for-kirby/issues/new) and I will evaluate it.
+:::
+
+#### Issue Tracker
+
+Before you can start sending reports to an issue tracker, we need to prepare a couple of things:
 
 1. [Create a Personal Access Token](#create-a-personal-access-token-pat)
 2. [Configure the plugin](#configure-the-plugin)
 
 #### Create a Personal Access Token (PAT)
 
-Personal access tokens are substitute passwords for your account to avoid putting your real password into configuration files. It depends on your platform how to obtain a *personal access token* (or *app password*).
+Personal access tokens are substitute passwords for your account to avoid putting your real password into configuration files. It depends on your platform how to obtain a *personal
+access token* (or *app password*).
 
 For the sake of simplicity I just refer to the related help docs:
 
@@ -85,20 +100,52 @@ You should create a custom user with limited scope access!
 
 In order to work properly, the plugin needs to be enabled and configured properly. This can be done using these options:
 
-1. `kirby.reporter.enabled`
-2. `kirby-reporter.repository`
-3. `kirby-reporter.token`
+1. `gearsdigital.reporter-for-kirby.enabled`
+2. `gearsdigital.reporter-for-kirby.repository.url`
+3. `gearsdigital.reporter-for-kirby.repository.token`
 
-If you're using Bitbucket and its Workspace feature, you might need to set `kirby-reporter.bitbucket.user` too. You can read more about that here: [#33](https://github.com/gearsdigital/kirby-reporter/issues/33)
+If you're using Bitbucket and its Workspace feature, you might need to set `gearsdigital.reporter-for-kirby.repository.user` too. You can read more about that
+here: [#33](https://github.com/gearsdigital/reporter-for-kirby/issues/33)
 
 ##### Example
 
 ```php
 // site/config/config.php
 return [
-  'kirby-reporter.enabled' => true,
-  'kirby-reporter.repository' => 'https://github.com/gearsdigital/kirby-reporter',
-  'kirby-reporter.token' => 'c56658e7c03a5995e2e1491e6a3b93fcde6225c9'
+  'gearsdigital.reporter-for-kirby' => [
+    'enabled' => true,
+    'repository' => [
+      'url' => 'https://bitbucket.org/gearsdigital/kirby-reporter-test',
+      'token' => 'c56658e7c03a5995e2e1491e6a3b93fcde6225c9',
+      'user' => 'gearsdigital-dev' // optional
+    ]
+  ]
+];
+```
+
+### Email
+
+To send the report via Email you need to setup these options:
+
+1. `gearsdigital.reporter-for-kirby.enabled`
+2. `gearsdigital.reporter-for-kirby.mail.from`
+3. `gearsdigital.reporter-for-kirby.mail.to`
+4. `gearsdigital.reporter-for-kirby.mail.subject`
+5. `gearsdigital.reporter-for-kirby.repository.type` - Optional. Default is `email`
+
+##### Example
+
+```php
+// site/config/config.php
+return [
+  'gearsdigital.reporter-for-kirby' => [
+    'enabled' => true,
+    'mail' => [
+      'from' => 'mail@example.com',
+      'to' => 'track@example.com',
+      'subject' => 'Issue Report form gearsdigital.com',
+    ]
+  ]
 ];
 ```
 
@@ -106,15 +153,60 @@ return [
 
 This is the list of all available options.
 
-| Parameter | Type | Description |
-| :--- | :--- | :--- |
-| `kirby-reporter.enabled` | `string` | **Required**.  Control the plugin state. |
-| `kirby-reporter.repository` | `string` | **Required**. Fully qualified URL of the repository to which the issues are reported. |
-| `kirby-reporter.token` | `string` | **Required**. Your personal access token (PAT) |
-| `kirby-reporter.bitbucket.user` | `string` | Define a custom Bitbucket user. Learn more about it in Issue [#33](https://github.com/gearsdigital/kirby-reporter/issues/33)
+```php
+
+return [
+    'gearsdigital.reporter-for-kirby' => [
+        /**
+         * Controls the plugin state.
+         * @type boolean
+         */
+        'enabled' => true,
+        
+        /**
+         * Holds repository configuration options
+         * 
+         * []{url: string, token: string, ?user: string}
+         */
+        'repository' => [
+            // required - Define the repository to which the reports are being sent
+            'url' => 'https://bitbucket.org/gearsdigital/kirby-reporter-test',
+            
+            // required - Define the personal access token
+            'token' => 'c56658e7c03a5995e2e1491e6a3b93fcde6225c9',
+            
+             // optional – Only necessary in specific bitbucket setups
+            'user' => 'gearsdigital-dev'
+        ],
+        
+         /**
+         * Holds mail configuration options
+         * 
+         * []{from: string, to: string, subject: string, type: string}
+         */
+        'mail' => [
+            // required - Define sender
+            'from' => 'mail@example.com',
+            
+            // required - Define the recipient
+            'to' => 'track@example.com',
+            
+            // required - Define the Email-Subject
+            'subject' => 'Issue Report form gearsdigital.com',
+            
+            // required - Define the the email type
+            'type' => 'text|html'
+        ],
+    ],
+]
+```
 
 ::: tip
 Learn how to [configure](https://getkirby.com/docs/guide/configuration#the-config-php) Kirby.
+:::
+
+::: danger
+If you define **repository** and **mail**, repository wins because it has a higher precedence!
 :::
 
 ## Customization
@@ -124,10 +216,12 @@ with [Blueprints](https://getkirby.com/docs/guide/blueprints/introduction) and [
 
 ### Form
 
+Customize the Report Form.
+
 #### Default
 
 ```yml
-# /site/plugins/kirby-reporter/blueprints/reporter/reporter.yml
+# /site/plugins/reporter-for-kirby/blueprints/reporter/reporter.yml
 reporter:
   fields:
     description:
@@ -137,7 +231,7 @@ reporter:
 ```
 
 ::: tip Important
-You can add any field you want, but you need to adapt the [template](#template) in order to see the fields in your preview.
+You can add any field you want, but you need to adapt the [template](#templating) in order to see the fields in your preview.
 :::
 
 #### Custom
@@ -180,13 +274,18 @@ sections:
     description: My custom description
 ```
 
-### Template
+### Templating
 
-The template is responsible to generate the actual value which is being sent. You can and do whatever you want to adapt the output, but the output is always treated as plain text.
+Reporter for Kirby comes with two templates. A template is responsible to generate the actual value which is being sent. You can and do whatever you want to adapt the output.
 
-#### Default
+1. Issue Tracker
+2. E-Mail
 
-`/site/plugins/kirby-reporter/templates/reporter.php`
+#### Issue Tracker (Repository)
+
+##### Default
+
+`/site/plugins/reporter-for-kirby/templates/reporter.php`
 
 ```php
 ## Issue Template
@@ -196,10 +295,10 @@ The template is responsible to generate the actual value which is being sent. Yo
 ```
 
 ::: tip Preview
-You can use the »Preview Tab« of the Issue Form to ensure your template is formatted properly.
+You can use the »Preview Tab« of the Issue Form to ensure your template is properly formatted. This doesn't work yet to preview Emails!
 :::
 
-#### Custom
+##### Custom
 You can override the default easily. Create a file named `reporter.php` and save it to `/site/templates/reporter.php`.
 
 Within the template you have access to an array of all available fields. Each field consists the `key` and the selected `value`.
@@ -208,6 +307,36 @@ Within the template you have access to an array of all available fields. Each fi
 /** @var array $fields */
 var_dump($fields);
 ```
+
 :::tip
 Output can be anything your issue tracker can deal with. Markdown might be a good start :)
 :::
+
+#### E-Mail
+
+You can define two types of Email-Templates, `html` and `text`:
+
+- `/site/plugins/reporter-for-kirby/templates/emails/report.html.php`
+- `/site/plugins/reporter-for-kirby/templates/emails/report.text.php`
+
+Which one is used depends on your configured type. Default is `html`. Within a template you have access to `string $title` and `array $fields`;
+
+##### Default (html)
+
+`/site/plugins/reporter-for-kirby/templates/emails/report.html.php`
+
+```php
+Email HTML
+Title: <?php if (isset($title)): ?><?= $title ?? ''; ?><?php endif; ?>
+Fields: <?php if (isset($fields)): ?><?= $fields['description'] ?? ''; ?><?php endif; ?>
+```
+
+##### Default (text)
+
+`/site/plugins/reporter-for-kirby/templates/emails/report.text.php`
+
+```php
+Email TEXT
+Title: <?php if (isset($title)): ?><?= $title ?? ''; ?><?php endif; ?>
+Fields: <?php if (isset($fields)): ?><?= $fields['description'] ?? ''; ?><?php endif; ?>
+```
